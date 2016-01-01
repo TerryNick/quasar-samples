@@ -1,0 +1,9 @@
+machine:
+  services:
+    - docker
+
+test:
+  override:
+    - docker run $DOCKER_REPO /bin/sh -c "/usr/local/bin/jupyter nbconvert --to=html --ExecutePreprocessor.enabled=True --ExecutePreprocessor.timeout=3600 samples/*.ipynb":
+        timeout: 7200
+
