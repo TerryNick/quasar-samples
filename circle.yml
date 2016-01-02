@@ -4,6 +4,6 @@ machine:
 
 test:
   override:
-    - docker run $DOCKER_REPO /bin/sh -c "/usr/local/bin/jupyter nbconvert --to=html --ExecutePreprocessor.enabled=True --ExecutePreprocessor.timeout=3600 samples/*.ipynb":
+    - docker run -v $HOME/$CIRCLE_PROJECT_REPONAME:/home/swuser/samples $DOCKER_REPO /bin/sh -c "/usr/local/bin/jupyter nbconvert --to=html --ExecutePreprocessor.enabled=True --ExecutePreprocessor.timeout=3600 samples/*.ipynb":
         timeout: 7200
 
